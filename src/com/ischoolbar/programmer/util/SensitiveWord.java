@@ -1,7 +1,5 @@
 package com.ischoolbar.programmer.util;
 
-
- 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +10,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
- 
+/**
+ *  敏感字处理
+ * @author 
+ *
+ */
 public class SensitiveWord {
 	private StringBuilder replaceAll;// 初始化
 	private String encoding = "UTF-8";
@@ -22,55 +24,55 @@ public class SensitiveWord {
 	private List<String> arrayList;
 	public Set<String> sensitiveWordSet;
 	public List<String> sensitiveWordList;
- 
+
 	public SensitiveWord(String replceStr, int replceSize) {
 		this.replceStr = fileName;
 		this.replceSize = replceSize;
 	}
- 
+
 	public SensitiveWord() {
 	}
- 
+
 	public StringBuilder getReplaceAll() {
 		return replaceAll;
 	}
- 
+
 	public void setReplaceAll(StringBuilder replaceAll) {
 		this.replaceAll = replaceAll;
 	}
- 
+
 	public String getReplceStr() {
 		return replceStr;
 	}
- 
+
 	public void setReplceStr(String replceStr) {
 		this.replceStr = replceStr;
 	}
- 
+
 	public int getReplceSize() {
 		return replceSize;
 	}
- 
+
 	public void setReplceSize(int replceSize) {
 		this.replceSize = replceSize;
 	}
- 
+
 	public List<String> getArrayList() {
 		return arrayList;
 	}
- 
+
 	public void setArrayList(List<String> arrayList) {
 		this.arrayList = arrayList;
 	}
- 
+
 	public String getEncoding() {
 		return encoding;
 	}
- 
+
 	public void setEncoding(String encoding) {
 		this.encoding = encoding;
 	}
- 
+
 	/**
 	 * 将敏感字转换为*符号
 	 * 
@@ -81,7 +83,8 @@ public class SensitiveWord {
 		sensitiveWordSet = new HashSet<String>();
 		sensitiveWordList = new ArrayList<>();
 		StringBuilder buffer = new StringBuilder(str);
-		HashMap<Integer, Integer> hash = new HashMap<Integer, Integer>(arrayList.size());
+		HashMap<Integer, Integer> hash = new HashMap<Integer, Integer>(
+				arrayList.size());
 		String temp;
 		for (int x = 0; x < arrayList.size(); x++) {
 			temp = arrayList.get(x);
@@ -89,7 +92,8 @@ public class SensitiveWord {
 			for (int start = -1; (start = buffer.indexOf(temp, findIndexSize)) > -1;) {
 				findIndexSize = start + temp.length();
 				Integer mapStart = hash.get(start);
-				if (mapStart == null || (mapStart != null && findIndexSize > mapStart)) {
+				if (mapStart == null
+						|| (mapStart != null && findIndexSize > mapStart)) {
 					hash.put(start, findIndexSize);
 				}
 			}
@@ -102,12 +106,13 @@ public class SensitiveWord {
 				sensitiveWordSet.add(sensitive);
 				sensitiveWordList.add(sensitive);
 			}
-			buffer.replace(startIndex, endIndex, replaceAll.substring(0, endIndex - startIndex));
+			buffer.replace(startIndex, endIndex,
+					replaceAll.substring(0, endIndex - startIndex));
 		}
 		hash.clear();
 		return buffer.toString();
 	}
- 
+
 	/**
 	 * 初始化读取敏感文件库
 	 */
@@ -120,7 +125,8 @@ public class SensitiveWord {
 		InputStreamReader read = null;
 		BufferedReader bufferedReader = null;
 		try {
-			read = new InputStreamReader(SensitiveWord.class.getClassLoader().getResourceAsStream("keyword.properties"), encoding);
+			read = new InputStreamReader(SensitiveWord.class.getClassLoader()
+					.getResourceAsStream("keyword.properties"), encoding);
 			bufferedReader = new BufferedReader(read);
 			for (String txt = null; (txt = bufferedReader.readLine()) != null;) {
 				if (!arrayList.contains(txt))
@@ -145,7 +151,7 @@ public class SensitiveWord {
 			}
 		}
 	}
- 
+
 	/**
 	 * 判断是否有敏感词汇
 	 * 
@@ -162,7 +168,7 @@ public class SensitiveWord {
 		}
 		return false;
 	}
- 
+
 	public static String filterInfoAfter(String str) {
 		// 初始敏感词库
 		SensitiveWord sw = new SensitiveWord();
@@ -170,6 +176,5 @@ public class SensitiveWord {
 		str = sw.filterInfo(str);
 		return str;
 	}
- 
-	
+
 }
