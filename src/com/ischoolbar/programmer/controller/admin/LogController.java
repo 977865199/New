@@ -18,8 +18,7 @@ import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.LogService;
 
 /**
- * ÈÕÖ¾¹ÜÀí¿ØÖÆÆ÷
- * @author judge
+ * æ—¥å¿—ç®¡ç†æ§åˆ¶å™¨
  *
  */
 @RequestMapping("/admin/log")
@@ -29,7 +28,7 @@ public class LogController {
 	private LogService logService;
 	
 	/**
-	 * ÈÕÖ¾ÁĞ±íÒ³Ãæ
+	 * æ—¥å¿—åˆ—è¡¨é¡µé¢
 	 * @param model
 	 * @return
 	 */
@@ -40,7 +39,7 @@ public class LogController {
 	}
 	
 	/**
-	 * »ñÈ¡ÈÕÖ¾ÁĞ±í
+	 * è·å–æ—¥å¿—åˆ—è¡¨
 	 * @param page
 	 * @param content
 	 * @param roleId
@@ -63,7 +62,7 @@ public class LogController {
 	}
 	
 	/**
-	 * Ìí¼ÓÈÕÖ¾
+	 * æ·»åŠ æ—¥å¿—
 	 * @param user
 	 * @return
 	 */
@@ -73,29 +72,29 @@ public class LogController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(log == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄÈÕÖ¾ĞÅÏ¢£¡");
+			ret.put("msg", "è¯·å¡«å†™æ­£ç¡®çš„æ—¥å¿—ä¿¡æ¯ï¼");
 			return ret;
 		}
 		if(StringUtils.isEmpty(log.getContent())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÈÕÖ¾ÄÚÈİ£¡");
+			ret.put("msg", "è¯·å¡«å†™æ—¥å¿—å†…å®¹ï¼");
 			return ret;
 		}
 		log.setCreateTime(new Date());
 		if(logService.add(log) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ÈÕÖ¾Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "æ—¥å¿—æ·»åŠ å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ÈÕÖ¾Ìí¼Ó³É¹¦£¡");
+		ret.put("msg", "æ—¥å¿—æ·»åŠ æˆåŠŸï¼");
 		return ret;
 	}
 	
 	
 	
 	/**
-	 * ÅúÁ¿É¾³ıÈÕÖ¾
+	 * æ‰¹é‡åˆ é™¤æ—¥å¿—
 	 * @param ids
 	 * @return
 	 */
@@ -105,7 +104,7 @@ public class LogController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(StringUtils.isEmpty(ids)){
 			ret.put("type", "error");
-			ret.put("msg", "Ñ¡ÔñÒªÉ¾³ıµÄÊı¾İ£¡");
+			ret.put("msg", "é€‰æ‹©è¦åˆ é™¤çš„æ•°æ®ï¼");
 			return ret;
 		}
 		if(ids.contains(",")){
@@ -113,11 +112,11 @@ public class LogController {
 		}
 		if(logService.delete(ids) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ÈÕÖ¾É¾³ıÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "æ—¥å¿—åˆ é™¤å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ÈÕÖ¾É¾³ı³É¹¦£¡");
+		ret.put("msg", "æ—¥å¿—åˆ é™¤æˆåŠŸï¼");
 		return ret;
 	}
 	

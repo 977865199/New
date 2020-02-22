@@ -33,8 +33,7 @@ import com.ischoolbar.programmer.util.CpachaUtil;
 import com.ischoolbar.programmer.util.MenuUtil;
 
 /**
- * ÏµÍ³²Ù×÷Àà¿ØÖÆÆ÷
- * @author judge
+ * ç³»ç»Ÿæ“ä½œç±»æ§åˆ¶å™¨
  *
  */
 @Controller
@@ -57,7 +56,7 @@ public class SystemController {
 	private LogService logService;
 	
 	/**
-	 * ÏµÍ³µÇÂ¼ºóµÄÖ÷Ò³
+	 * ç³»ç»Ÿç™»å½•åçš„ä¸»é¡µ
 	 * @param model
 	 * @return
 	 */
@@ -71,7 +70,7 @@ public class SystemController {
 	}
 	
 	/**
-	 * ÏµÍ³µÇÂ¼ºóµÄ»¶Ó­Ò³
+	 * ç³»ç»Ÿç™»å½•åçš„æ¬¢è¿é¡µ
 	 * @param model
 	 * @return
 	 */
@@ -81,7 +80,7 @@ public class SystemController {
 		return model;
 	}
 	/**
-	 * µÇÂ½Ò³Ãæ
+	 * ç™»é™†é¡µé¢
 	 * @param model
 	 * @return
 	 */
@@ -92,7 +91,7 @@ public class SystemController {
 	}
 	
 	/**
-	 * µÇÂ¼±íµ¥Ìá½»´¦Àí¿ØÖÆÆ÷
+	 * ç™»å½•è¡¨å•æäº¤å¤„ç†æ§åˆ¶å™¨
 	 * @param user
 	 * @param cpacha
 	 * @return
@@ -103,53 +102,53 @@ public class SystemController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(user == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÓÃ»§ĞÅÏ¢£¡");
+			ret.put("msg", "è¯·å¡«å†™ç”¨æˆ·ä¿¡æ¯ï¼");
 			return ret;
 		}
 		if(StringUtils.isEmpty(cpacha)){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÑéÖ¤Âë£¡");
+			ret.put("msg", "è¯·å¡«å†™éªŒè¯ç ï¼");
 			return ret;
 		}
 		if(StringUtils.isEmpty(user.getUsername())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÓÃ»§Ãû£¡");
+			ret.put("msg", "è¯·å¡«å†™ç”¨æˆ·åï¼");
 			return ret;
 		}
 		if(StringUtils.isEmpty(user.getPassword())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÃÜÂë£¡");
+			ret.put("msg", "è¯·å¡«å†™å¯†ç ï¼");
 			return ret;
 		}
 		Object loginCpacha = request.getSession().getAttribute("loginCpacha");
 		if(loginCpacha == null){
 			ret.put("type", "error");
-			ret.put("msg", "»á»°³¬Ê±£¬ÇëË¢ĞÂÒ³Ãæ£¡");
+			ret.put("msg", "ä¼šè¯è¶…æ—¶ï¼Œè¯·åˆ·æ–°é¡µé¢ï¼");
 			return ret;
 		}
 		if(!cpacha.toUpperCase().equals(loginCpacha.toString().toUpperCase())){
 			ret.put("type", "error");
-			ret.put("msg", "ÑéÖ¤Âë´íÎó£¡");
-			logService.add("ÓÃ»§ÃûÎª"+user.getUsername()+"µÄÓÃ»§µÇÂ¼Ê±ÊäÈëÑéÖ¤Âë´íÎó!");
+			ret.put("msg", "éªŒè¯ç é”™è¯¯ï¼");
+			logService.add("ç”¨æˆ·åä¸º"+user.getUsername()+"çš„ç”¨æˆ·ç™»å½•æ—¶è¾“å…¥éªŒè¯ç é”™è¯¯!");
 			return ret;
 		}
 		User findByUsername = userService.findByUsername(user.getUsername());
 		if(findByUsername == null){
 			ret.put("type", "error");
-			ret.put("msg", "¸ÃÓÃ»§Ãû²»´æÔÚ£¡");
-			logService.add("µÇÂ¼Ê±£¬ÓÃ»§ÃûÎª"+user.getUsername()+"µÄÓÃ»§²»´æÔÚ!");
+			ret.put("msg", "è¯¥ç”¨æˆ·åä¸å­˜åœ¨ï¼");
+			logService.add("ç™»å½•æ—¶ï¼Œç”¨æˆ·åä¸º"+user.getUsername()+"çš„ç”¨æˆ·ä¸å­˜åœ¨!");
 			return ret;
 		}
 		if(!user.getPassword().equals(findByUsername.getPassword())){
 			ret.put("type", "error");
-			ret.put("msg", "ÃÜÂë´íÎó£¡");
-			logService.add("ÓÃ»§ÃûÎª"+user.getUsername()+"µÄÓÃ»§µÇÂ¼Ê±ÊäÈëÃÜÂë´íÎó!");
+			ret.put("msg", "å¯†ç é”™è¯¯ï¼");
+			logService.add("ç”¨æˆ·åä¸º"+user.getUsername()+"çš„ç”¨æˆ·ç™»å½•æ—¶è¾“å…¥å¯†ç é”™è¯¯!");
 			return ret;
 		}
-		//ËµÃ÷ÓÃ»§ÃûÃÜÂë¼°ÑéÖ¤Âë¶¼ÕıÈ·
-		//´ËÊ±ĞèÒª²éÑ¯ÓÃ»§µÄ½ÇÉ«È¨ÏŞ
+		//è¯´æ˜ç”¨æˆ·åå¯†ç åŠéªŒè¯ç éƒ½æ­£ç¡®
+		//æ­¤æ—¶éœ€è¦æŸ¥è¯¢ç”¨æˆ·çš„è§’è‰²æƒé™
 		Role role = roleService.find(findByUsername.getRoleId());
-		List<Authority> authorityList = authorityService.findListByRoleId(role.getId());//¸ù¾İ½ÇÉ«»ñÈ¡È¨ÏŞÁĞ±í
+		List<Authority> authorityList = authorityService.findListByRoleId(role.getId());//æ ¹æ®è§’è‰²è·å–æƒé™åˆ—è¡¨
 		String menuIds = "";
 		for(Authority authority:authorityList){
 			menuIds += authority.getMenuId() + ",";
@@ -160,18 +159,18 @@ public class SystemController {
 //		System.out.println("menuIds:"+menuIds);
 //		menuIds="1,5,13";
 		List<Menu> userMenus = menuService.findListByIds(menuIds);
-		//°Ñ½ÇÉ«ĞÅÏ¢¡¢²Ëµ¥ĞÅÏ¢·Åµ½sessionÖĞ
+		//æŠŠè§’è‰²ä¿¡æ¯ã€èœå•ä¿¡æ¯æ”¾åˆ°sessionä¸­
 		request.getSession().setAttribute("admin", findByUsername);
 		request.getSession().setAttribute("role", role);
 		request.getSession().setAttribute("userMenus", userMenus);
 		ret.put("type", "success");
-		ret.put("msg", "µÇÂ¼³É¹¦£¡");
-		logService.add("ÓÃ»§ÃûÎª{"+user.getUsername()+"}£¬½ÇÉ«Îª{"+role.getName()+"}µÄÓÃ»§µÇÂ¼³É¹¦!");
+		ret.put("msg", "ç™»å½•æˆåŠŸï¼");
+		logService.add("ç”¨æˆ·åä¸º{"+user.getUsername()+"}ï¼Œè§’è‰²ä¸º{"+role.getName()+"}çš„ç”¨æˆ·ç™»å½•æˆåŠŸ!");
 		return ret;
 	}
 	
 	/**
-	 * ºóÌ¨ÍË³ö×¢Ïú¹¦ÄÜ
+	 * åå°é€€å‡ºæ³¨é”€åŠŸèƒ½
 	 * @param request
 	 * @return
 	 */
@@ -185,7 +184,7 @@ public class SystemController {
 	}
 	
 	/**
-	 * ĞŞ¸ÄÃÜÂëÒ³Ãæ
+	 * ä¿®æ”¹å¯†ç é¡µé¢
 	 * @param model
 	 * @return
 	 */
@@ -201,33 +200,33 @@ public class SystemController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(StringUtils.isEmpty(newpassword)){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ĞÂÃÜÂë£¡");
+			ret.put("msg", "è¯·å¡«å†™æ–°å¯†ç ï¼");
 			return ret;
 		}
 		User user = (User)request.getSession().getAttribute("admin");
 		if(!user.getPassword().equals(oldpassword)){
 			ret.put("type", "error");
-			ret.put("msg", "Ô­ÃÜÂë´íÎó£¡");
+			ret.put("msg", "åŸå¯†ç é”™è¯¯ï¼");
 			return ret;
 		}
 		user.setPassword(newpassword);
 		if(userService.editPassword(user) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ÃÜÂëĞŞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "å¯†ç ä¿®æ”¹å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ÃÜÂëĞŞ¸Ä³É¹¦£¡");
-		logService.add("ÓÃ»§ÃûÎª{"+user.getUsername()+"}£¬µÄÓÃ»§³É¹¦ĞŞ¸ÄÃÜÂë!");
+		ret.put("msg", "å¯†ç ä¿®æ”¹æˆåŠŸï¼");
+		logService.add("ç”¨æˆ·åä¸º{"+user.getUsername()+"}ï¼Œçš„ç”¨æˆ·æˆåŠŸä¿®æ”¹å¯†ç !");
 		return ret;
 	} 
 	
 	/**
-	 * ±¾ÏµÍ³ËùÓĞµÄÑéÖ¤Âë¾ù²ÉÓÃ´Ë·½·¨
+	 * æœ¬ç³»ç»Ÿæ‰€æœ‰çš„éªŒè¯ç å‡é‡‡ç”¨æ­¤æ–¹æ³•
 	 * @param vcodeLen
 	 * @param width
 	 * @param height
-	 * @param cpachaType:ÓÃÀ´Çø±ğÑéÖ¤ÂëµÄÀàĞÍ£¬´«Èë×Ö·û´®
+	 * @param cpachaType:ç”¨æ¥åŒºåˆ«éªŒè¯ç çš„ç±»å‹ï¼Œä¼ å…¥å­—ç¬¦ä¸²
 	 * @param request
 	 * @param response
 	 */

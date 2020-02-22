@@ -1,7 +1,5 @@
 package com.ischoolbar.programmer.service.admin.impl;
-/**
- * 新闻service实现类
- */
+
 import java.util.List;
 import java.util.Map;
 

@@ -7,11 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ischoolbar.programmer.entity.admin.News;
 
-/**
- * ÐÂÎÅdao
- * @author llq
- *
- */
+
 @Repository
 public interface NewsDao {
 	public int add(News news);

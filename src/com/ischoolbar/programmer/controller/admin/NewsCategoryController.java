@@ -18,8 +18,7 @@ import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.NewsCategoryService;
 
 /**
- * ĞÂÎÅ·ÖÀà¿ØÖÆÆ÷
- * @author judge
+ * æ–°é—»åˆ†ç±»æ§åˆ¶å™¨
  *
  */
 @RequestMapping("/admin/news_category")
@@ -30,7 +29,7 @@ public class NewsCategoryController {
 	private NewsCategoryService newsCategoryService;
 	
 	/**
-	 * ĞÂÎÅ·ÖÀàÁĞ±íÒ³Ãæ
+	 * æ–°é—»åˆ†ç±»åˆ—è¡¨é¡µé¢
 	 * @param model
 	 * @return
 	 */
@@ -41,7 +40,7 @@ public class NewsCategoryController {
 	}
 	
 	/**
-	 * ĞÂÎÅ·ÖÀàÌí¼Ó
+	 * æ–°é—»åˆ†ç±»æ·»åŠ 
 	 * @param newsCategory
 	 * @return
 	 */
@@ -51,26 +50,26 @@ public class NewsCategoryController {
 		Map<String,String> ret = new HashMap<String, String>();
 		if(newsCategory == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄ·ÖÀàĞÅÏ¢£¡");
+			ret.put("msg", "è¯·å¡«å†™æ­£ç¡®çš„åˆ†ç±»ä¿¡æ¯ï¼");
 			return ret;
 		}
 		if(StringUtils.isEmpty(newsCategory.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "·ÖÀàÃû³Æ²»ÄÜÎª¿Õ£¡");
+			ret.put("msg", "åˆ†ç±»åç§°ä¸èƒ½ä¸ºç©ºï¼");
 			return ret;
 		}
 		if(newsCategoryService.add(newsCategory) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "·ÖÀàÌí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "åˆ†ç±»æ·»åŠ å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "Ìí¼Ó³É¹¦£¡");
+		ret.put("msg", "æ·»åŠ æˆåŠŸï¼");
 		return ret;
 	}
 	
 	/**
-	 * ĞÂÎÅ·ÖÀàĞÅÏ¢±à¼­
+	 * æ–°é—»åˆ†ç±»ä¿¡æ¯ç¼–è¾‘
 	 * @param newsCategory
 	 * @return
 	 */
@@ -80,26 +79,26 @@ public class NewsCategoryController {
 		Map<String,String> ret = new HashMap<String, String>();
 		if(newsCategory == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄ·ÖÀàĞÅÏ¢£¡");
+			ret.put("msg", "è¯·å¡«å†™æ­£ç¡®çš„åˆ†ç±»ä¿¡æ¯ï¼");
 			return ret;
 		}
 		if(StringUtils.isEmpty(newsCategory.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "·ÖÀàÃû³Æ²»ÄÜÎª¿Õ£¡");
+			ret.put("msg", "åˆ†ç±»åç§°ä¸èƒ½ä¸ºç©ºï¼");
 			return ret;
 		}
 		if(newsCategoryService.edit(newsCategory) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "·ÖÀàĞŞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "åˆ†ç±»ä¿®æ”¹å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ĞŞ¸Ä³É¹¦£¡");
+		ret.put("msg", "ä¿®æ”¹æˆåŠŸï¼");
 		return ret;
 	}
 	
 	/**
-	 * É¾³ıĞÂÎÅ·ÖÀà
+	 * åˆ é™¤æ–°é—»åˆ†ç±»
 	 * @param id
 	 * @return
 	 */
@@ -109,27 +108,27 @@ public class NewsCategoryController {
 		Map<String,String> ret = new HashMap<String, String>();
 		if(id == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÒªÉ¾³ıµÄ·ÖÀàĞÅÏ¢£¡");
+			ret.put("msg", "è¯·é€‰æ‹©è¦åˆ é™¤çš„åˆ†ç±»ä¿¡æ¯ï¼");
 			return ret;
 		}
 		try{
 			if(newsCategoryService.delete(id) <= 0){
 				ret.put("type", "error");
-				ret.put("msg", "·ÖÀàÉ¾³ıÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+				ret.put("msg", "åˆ†ç±»åˆ é™¤å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 				return ret;
 			}
 		}catch(Exception e){
 			ret.put("type", "error");
-			ret.put("msg", "¸Ã·ÖÀàÏÂÓĞĞÂÎÅĞÅÏ¢£¬²»¿ÉÉ¾³ı£¡");
+			ret.put("msg", "è¯¥åˆ†ç±»ä¸‹æœ‰æ–°é—»ä¿¡æ¯ï¼Œä¸å¯åˆ é™¤ï¼");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ĞŞ¸Ä³É¹¦£¡");
+		ret.put("msg", "ä¿®æ”¹æˆåŠŸï¼");
 		return ret;
 	}
 	
 	/**
-	 * ·ÖÒ³Ä£ºıËÑË÷²éÑ¯ÁĞ±í
+	 * åˆ†é¡µæ¨¡ç³Šæœç´¢æŸ¥è¯¢åˆ—è¡¨
 	 * @param name
 	 * @param page
 	 * @return

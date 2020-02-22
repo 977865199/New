@@ -4,18 +4,14 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-/**
- * 新闻评论实体
- * @author llq
- *
- */
+
 @Component
 public class Comment {
 	private Long id;
-	private Long newsId;//新闻id
-	private News news;//新闻实体
-	private String nickname;//昵称
-	private String content;//评论内容
+	private Long newsId;
+	private News news;
+	private String nickname;
+	private String content;
 	private Date createTime;
 	public Long getId() {
 		return id;

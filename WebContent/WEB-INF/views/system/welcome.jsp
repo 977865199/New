@@ -9,8 +9,7 @@
 <div title="欢迎使用" style="padding:20px;overflow:hidden; color:red; " >
 	<p style="font-size: 50px; line-height: 60px; height: 60px;">${admin.username}</p>
 	<p style="font-size: 25px; line-height: 30px; height: 30px;">欢迎来到新闻后台管理系统</p>
-  	<p>开发人员：朱泓鑫</p>
-  	<p>开发周期：2018/12/20 --- 2019/05/01</p>
+  	<p>开发周期：2018/12/20 --- 2020/05/01</p>
   	
   	<hr />
   	<h2>系统环境</h2>

@@ -7,11 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ischoolbar.programmer.entity.admin.Comment;
 
-/**
- * ĞÂÎÅÆÀÂÛdao
- * @author llq
- *
- */
+
 @Repository
 public interface CommentDao {
 	public int add(Comment comment);

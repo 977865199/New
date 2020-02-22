@@ -68,7 +68,7 @@
     <!-- end of main --> 
     <!-- begin of footer -->
 	<div class="wu-footer" data-options="region:'south',border:true,split:true">
-    	&copy; 2019.西华师范大学校园实时信息发布系统
+    	&copy; 2020.西华师范大学校园实时信息发布系统
     </div>
     <!-- end of footer -->  
     <script type="text/javascript">

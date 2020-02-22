@@ -7,11 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ischoolbar.programmer.entity.admin.User;
 
-/**
- * user”√ªßdao
- * @author llq
- *
- */
+
 @Repository
 public interface UserDao {
 	public User findByUsername(String username);

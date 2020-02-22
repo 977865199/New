@@ -2,11 +2,6 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
-/**
- * 新闻分类实体
- * @author llq
- *
- */
 @Component
 public class NewsCategory {
 	private Long id;

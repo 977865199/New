@@ -7,11 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ischoolbar.programmer.entity.admin.Comment;
 
-/**
- * 新闻评论接口
- * @author llq
- *
- */
+
 @Service
 public interface CommentService {
 	public int add(Comment comment);

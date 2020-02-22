@@ -17,8 +17,7 @@ import com.ischoolbar.programmer.service.admin.NewsCategoryService;
 import com.ischoolbar.programmer.service.admin.NewsService;
 
 /**
- * Ç°Ì¨Ò³ÃæÊ×Ò³¿ØÖÆÆ÷
- * @author zhuzhu
+ * å‰å°é¡µé¢é¦–é¡µæ§åˆ¶å™¨
  *
  */
 @RequestMapping("/index")
@@ -32,7 +31,7 @@ public class IndexController {
 	private NewsService newsService;
 	
 	/**
-	 * ÏµÍ³Ê×Ò³
+	 * ç³»ç»Ÿé¦–é¡µ
 	 * @param model
 	 * @return
 	 */
@@ -48,7 +47,7 @@ public class IndexController {
 	}
 	
 	/**
-	 * »ñÈ¡ÍøÕ¾»ù±¾ĞÅÏ¢
+	 * è·å–ç½‘ç«™åŸºæœ¬ä¿¡æ¯
 	 * @return
 	 */
 	@RequestMapping(value="/get_site_info",method=RequestMethod.POST)

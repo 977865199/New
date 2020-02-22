@@ -22,8 +22,7 @@ import com.ischoolbar.programmer.service.admin.NewsCategoryService;
 import com.ischoolbar.programmer.service.admin.NewsService;
 
 /**
- * Ç°Ì¨ĞÂÎÅ¿ØÖÆÆ÷
- * @author llq
+ * å‰å°æ–°é—»æ§åˆ¶å™¨
  *
  */
 @RequestMapping("/news")
@@ -41,7 +40,7 @@ public class HomeNewsController {
 	
 	
 	/**
-	 * ²é¿´ĞÂÎÅÏêÇé
+	 * æŸ¥çœ‹æ–°é—»è¯¦æƒ…
 	 * @param model
 	 * @param id
 	 * @return
@@ -54,13 +53,13 @@ public class HomeNewsController {
 		model.addObject("title", news.getTitle());
 		model.addObject("tags", news.getTags().split(","));
 		model.setViewName("home/news/detail");
-		//²é¿´Êı¼Ó1
+		//æŸ¥çœ‹æ•°åŠ 1
 		newsService.updateViewNumber(id);
 		return model;
 	}
 	
 	/**
-	 * °´ÕÕ·ÖÀàÏÔÊ¾ĞÂÎÅÁĞ±í
+	 * æŒ‰ç…§åˆ†ç±»æ˜¾ç¤ºæ–°é—»åˆ—è¡¨
 	 * @param model
 	 * @param cid
 	 * @return
@@ -78,13 +77,13 @@ public class HomeNewsController {
 		model.addObject("newsList", newsService.findList(queryMap));
 		NewsCategory newsCategory = newsCategoryService.find(cid);
 		model.addObject("newsCategory", newsCategory);
-		model.addObject("title", newsCategory.getName() + "·ÖÀàÏÂµÄĞÂÎÅĞÅÏ¢");
+		model.addObject("title", newsCategory.getName() + "åˆ†ç±»ä¸‹çš„æ–°é—»ä¿¡æ¯");
 		model.setViewName("home/news/category_list");
 		return model;
 	}
 	
 	/**
-	 * »ñÈ¡°´ÆÀÂÛÊıÅÅĞòµÄ×îĞÂnÌõĞÅÏ¢
+	 * è·å–æŒ‰è¯„è®ºæ•°æ’åºçš„æœ€æ–°næ¡ä¿¡æ¯
 	 * @return
 	 */
 	@RequestMapping(value="/last_comment_list",method=RequestMethod.POST)
@@ -98,7 +97,7 @@ public class HomeNewsController {
 	
 	
 	/**
-	 * ·ÖÒ³»ñÈ¡Ä³¸ö·ÖÀàÏÂµÄÎÄÕÂ
+	 * åˆ†é¡µè·å–æŸä¸ªåˆ†ç±»ä¸‹çš„æ–‡ç« 
 	 * @param page
 	 * @param cid
 	 * @return
@@ -119,7 +118,7 @@ public class HomeNewsController {
 	}
 	
 	/**
-	 * »ñÈ¡ËÑË÷ÁĞ±í
+	 * è·å–æœç´¢åˆ—è¡¨
 	 * @param model
 	 * @param keyword
 	 * @param page
@@ -136,14 +135,14 @@ public class HomeNewsController {
 		queryMap.put("title", keyword);
 		model.addObject("newsCategoryList", newsCategoryService.findAll());
 		model.addObject("newsList", newsService.findList(queryMap));
-		model.addObject("title", keyword + "¹Ø¼ü×ÖÏÂµÄĞÂÎÅĞÅÏ¢");
+		model.addObject("title", keyword + "å…³é”®å­—ä¸‹çš„æ–°é—»ä¿¡æ¯");
 		model.addObject("keyword", keyword);
 		model.setViewName("home/news/search_list");
 		return model;
 	}
 	
 	/**
-	 * ·ÖÒ³¼ÓÔØËÑË÷ÁĞ±í
+	 * åˆ†é¡µåŠ è½½æœç´¢åˆ—è¡¨
 	 * @param page
 	 * @param keyword
 	 * @return
@@ -164,7 +163,7 @@ public class HomeNewsController {
 	}
 	
 	/**
-	 * Ìí¼ÓÆÀÂÛ
+	 * æ·»åŠ è¯„è®º
 	 * @param comment
 	 * @return
 	 */
@@ -174,31 +173,31 @@ public class HomeNewsController {
 		Map<String, Object> ret = new HashMap<String, Object>();
 		if(comment == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÍêÕûµÄÆÀÂÛĞÅÏ¢£¡");
+			ret.put("msg", "è¯·å¡«å†™å®Œæ•´çš„è¯„è®ºä¿¡æ¯ï¼");
 			return ret;
 		}
 		if(comment.getNewsId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÒ»¸öÎÄÕÂ½øĞĞÆÀÂÛ£¡");
+			ret.put("msg", "è¯·é€‰æ‹©ä¸€ä¸ªæ–‡ç« è¿›è¡Œè¯„è®ºï¼");
 			return ret;
 		}
 		if(StringUtils.isEmpty(comment.getNickname())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´êÇ³Æ£¡");
+			ret.put("msg", "è¯·å¡«å†™æ˜µç§°ï¼");
 			return ret;
 		}
 		if(StringUtils.isEmpty(comment.getContent())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÆÀÂÛÄÚÈİ£¡");
+			ret.put("msg", "è¯·å¡«å†™è¯„è®ºå†…å®¹ï¼");
 			return ret;
 		}
 		comment.setCreateTime(new Date());
 		if(commentService.add(comment) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ÆÀÂÛÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "è¯„è®ºå¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
-		//ÎÄÕÂÆÀÂÛÊı¼Ó1
+		//æ–‡ç« è¯„è®ºæ•°åŠ 1
 		newsService.updateCommentNumber(comment.getNewsId());
 		ret.put("type", "success");
 		ret.put("createTime", comment.getCreateTime());
@@ -206,7 +205,7 @@ public class HomeNewsController {
 	}
 	
 	/**
-	 * ·ÖÒ³»ñÈ¡Ä³Ò»ÎÄÕÂµÄÆÀÂÛ
+	 * åˆ†é¡µè·å–æŸä¸€æ–‡ç« çš„è¯„è®º
 	 * @param page
 	 * @return
 	 */

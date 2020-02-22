@@ -20,9 +20,8 @@ import com.ischoolbar.programmer.service.admin.NewsService;
 import com.ischoolbar.programmer.util.SensitiveWord;
 
 /**
- * ĞÂÎÅÆÀÂÛ¿ØÖÆÆ÷
+ * æ–°é—»è¯„è®ºæ§åˆ¶å™¨
  * 
- * @author judge
  *
  */
 @RequestMapping("/admin/comment")
@@ -36,7 +35,7 @@ public class CommentController {
 	private CommentService commentService;
 
 	/**
-	 * ĞÂÎÅÆÀÂÛÁĞ±íÒ³Ãæ
+	 * æ–°é—»è¯„è®ºåˆ—è¡¨é¡µé¢
 	 * 
 	 * @param model
 	 * @return
@@ -52,7 +51,7 @@ public class CommentController {
 	}
 
 	/**
-	 * ĞÂÎÅÆÀÂÛÌí¼Ó
+	 * æ–°é—»è¯„è®ºæ·»åŠ 
 	 * 
 	 * @param newsCategory
 	 * @return
@@ -60,45 +59,45 @@ public class CommentController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Comment comment) {
-		// È¥³ıÃô¸ĞĞÅÏ¢
+		// å»é™¤æ•æ„Ÿä¿¡æ¯
 		CommentController.minganInfo(comment);
 		Map<String, String> ret = new HashMap<String, String>();
 		if (comment == null) {
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄÆÀÂÛĞÅÏ¢£¡");
+			ret.put("msg", "è¯·å¡«å†™æ­£ç¡®çš„è¯„è®ºä¿¡æ¯ï¼");
 			return ret;
 		}
 		if (comment.getNewsId() == null) {
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÒªÆÀÂÛµÄĞÂÎÅ£¡");
+			ret.put("msg", "è¯·é€‰æ‹©è¦è¯„è®ºçš„æ–°é—»ï¼");
 			return ret;
 		}
 		if (StringUtils.isEmpty(comment.getNickname())) {
 			ret.put("type", "error");
-			ret.put("msg", "ÆÀÂÛêÇ³Æ²»ÄÜÎª¿Õ£¡");
+			ret.put("msg", "è¯„è®ºæ˜µç§°ä¸èƒ½ä¸ºç©ºï¼");
 			return ret;
 		}
 		if (StringUtils.isEmpty(comment.getContent())) {
 			ret.put("type", "error");
-			ret.put("msg", "ÆÀÂÛÄÚÈİ²»ÄÜÎª¿Õ£¡");
+			ret.put("msg", "è¯„è®ºå†…å®¹ä¸èƒ½ä¸ºç©ºï¼");
 			return ret;
 		}
 		comment.setCreateTime(new Date());
 		if (commentService.add(comment) <= 0) {
 			ret.put("type", "error");
-			ret.put("msg", "ÆÀÂÛÌí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "è¯„è®ºæ·»åŠ å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
 
 		ret.put("type", "success");
-		ret.put("msg", "Ìí¼Ó³É¹¦£¡");
-		// ĞÂÎÅÆÀÂÛÊıÁ¿¼Ó1
+		ret.put("msg", "æ·»åŠ æˆåŠŸï¼");
+		// æ–°é—»è¯„è®ºæ•°é‡åŠ 1
 		newsService.updateCommentNumber(comment.getNewsId());
 		return ret;
 	}
 
 	/**
-	 * ĞÂÎÅÆÀÂÛĞÅÏ¢±à¼­
+	 * æ–°é—»è¯„è®ºä¿¡æ¯ç¼–è¾‘
 	 * 
 	 * @param newsCategory
 	 * @return
@@ -106,42 +105,42 @@ public class CommentController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(Comment comment) {
-		// È¥³ıÃô¸ĞĞÅÏ¢
+		// å»é™¤æ•æ„Ÿä¿¡æ¯
 		CommentController.minganInfo(comment);
 		Map<String, String> ret = new HashMap<String, String>();
 		if (comment == null) {
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄÆÀÂÛĞÅÏ¢£¡");
+			ret.put("msg", "è¯·å¡«å†™æ­£ç¡®çš„è¯„è®ºä¿¡æ¯ï¼");
 			return ret;
 		}
 		if (comment.getNewsId() == null) {
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÒªÆÀÂÛµÄĞÂÎÅ£¡");
+			ret.put("msg", "è¯·é€‰æ‹©è¦è¯„è®ºçš„æ–°é—»ï¼");
 			return ret;
 		}
 		if (StringUtils.isEmpty(comment.getNickname())) {
 			ret.put("type", "error");
-			ret.put("msg", "ÆÀÂÛêÇ³Æ²»ÄÜÎª¿Õ£¡");
+			ret.put("msg", "è¯„è®ºæ˜µç§°ä¸èƒ½ä¸ºç©ºï¼");
 			return ret;
 		}
 		if (StringUtils.isEmpty(comment.getContent())) {
 			ret.put("type", "error");
-			ret.put("msg", "ÆÀÂÛÄÚÈİ²»ÄÜÎª¿Õ£¡");
+			ret.put("msg", "è¯„è®ºå†…å®¹ä¸èƒ½ä¸ºç©ºï¼");
 			return ret;
 		}
 		if (commentService.edit(comment) <= 0) {
 			ret.put("type", "error");
-			ret.put("msg", "ÆÀÂÛĞŞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "è¯„è®ºä¿®æ”¹å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
 
 		ret.put("type", "success");
-		ret.put("msg", "ĞŞ¸Ä³É¹¦£¡");
+		ret.put("msg", "ä¿®æ”¹æˆåŠŸï¼");
 		return ret;
 	}
 
 	/**
-	 * É¾³ıĞÂÎÅÆÀÂÛ
+	 * åˆ é™¤æ–°é—»è¯„è®º
 	 * 
 	 * @param id
 	 * @return
@@ -152,7 +151,7 @@ public class CommentController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if (ids == null) {
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÒªÉ¾³ıµÄÆÀÂÛĞÅÏ¢£¡");
+			ret.put("msg", "è¯·é€‰æ‹©è¦åˆ é™¤çš„è¯„è®ºä¿¡æ¯ï¼");
 			return ret;
 		}
 		if (ids.contains(",")) {
@@ -160,16 +159,16 @@ public class CommentController {
 		}
 		if (commentService.delete(ids) <= 0) {
 			ret.put("type", "error");
-			ret.put("msg", "ÆÀÂÛÉ¾³ıÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "è¯„è®ºåˆ é™¤å¤±è´¥ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "É¾³ı³É¹¦£¡");
+		ret.put("msg", "åˆ é™¤æˆåŠŸï¼");
 		return ret;
 	}
 
 	/**
-	 * ·ÖÒ³Ä£ºıËÑË÷²éÑ¯ÁĞ±í
+	 * åˆ†é¡µæ¨¡ç³Šæœç´¢æŸ¥è¯¢åˆ—è¡¨
 	 * 
 	 * @param name
 	 * @param page
@@ -193,7 +192,7 @@ public class CommentController {
 	}
 
 	/**
-	 * È¥³ıÃô¸ĞĞÅÏ¢
+	 * å»é™¤æ•æ„Ÿä¿¡æ¯
 	 * 
 	 * @param news
 	 * @return
@@ -201,13 +200,13 @@ public class CommentController {
 
 	public static Comment minganInfo(Comment comment) {
 
-		// È¥³ıÃô¸ĞêÇ³Æ
+		// å»é™¤æ•æ„Ÿæ˜µç§°
 		if (SensitiveWord.checkSenstiveWord(comment.getNickname())) {
 			comment.setNickname(SensitiveWord.filterInfoAfter(comment
 					.getNickname()));
 		}
 
-		// È¥³ıÃô¸ĞÕıÎÄ
+		// å»é™¤æ•æ„Ÿæ­£æ–‡
 		if (SensitiveWord.checkSenstiveWord(comment.getContent())) {
 			comment.setContent(SensitiveWord.filterInfoAfter(comment
 					.getContent()));

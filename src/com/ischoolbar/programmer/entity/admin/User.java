@@ -2,21 +2,17 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
-/**
- * 用户实体类
- * @author llq
- *
- */
+
 @Component
 public class User {
-	private Long id;//用户id，设置自增
-	private String username;//用户名，登录名
-	private String password;//登录密码
-	private Long roleId;//所属角色id
-	private String photo;//头像照片地址
-	private int sex;//性别0,代表未知，1代表男，2代表女
-	private Integer age;//年龄
-	private String address;//家庭住址
+	private Long id;
+	private String username;
+	private String password;
+	private Long roleId;
+	private String photo;
+	private int sex;
+	private Integer age;
+	private String address;
 	public Long getId() {
 		return id;
 	}

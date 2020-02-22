@@ -7,11 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ischoolbar.programmer.entity.admin.NewsCategory;
 
-/**
- * 新闻分类接口
- * @author llq
- *
- */
+
 @Service
 public interface NewsCategoryService {
 	public int add(NewsCategory newsCategory);

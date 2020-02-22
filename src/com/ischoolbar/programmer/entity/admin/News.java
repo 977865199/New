@@ -4,25 +4,21 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-/**
- * 新闻实体
- * @author llq
- *
- */
+
 @Component
 public class News {
 	private Long id;
-	private Long categoryId;//分类id
-	private NewsCategory newsCategory;//分类实体
-	private String title;//新闻标题
-	private String abstrs;//新闻摘要
-	private String tags;//新闻标签
-	private String photo;//新闻封面图片
-	private String author;//作者
-	private String content;//新闻内容
-	private Integer viewNumber = 0;//浏览量
-	private Integer commentNumber = 0;//评论数量
-	private Date createTime;//发布时间
+	private Long categoryId;
+	private NewsCategory newsCategory;
+	private String title;
+	private String abstrs;
+	private String tags;
+	private String photo;
+	private String author;
+	private String content;
+	private Integer viewNumber = 0;
+	private Integer commentNumber = 0;
+	private Date createTime;
 	
 	public Long getId() {
 		return id;

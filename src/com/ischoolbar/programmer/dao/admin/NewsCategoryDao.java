@@ -7,11 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ischoolbar.programmer.entity.admin.NewsCategory;
 
-/**
- * 新闻分类dao
- * @author llq
- *
- */
+
 @Repository
 public interface NewsCategoryDao {
 	public int add(NewsCategory newsCategory);
