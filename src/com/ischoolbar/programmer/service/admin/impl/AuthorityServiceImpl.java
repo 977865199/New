@@ -16,19 +16,19 @@ public class AuthorityServiceImpl implements AuthorityService {
 	
 	@Override
 	public int add(Authority authority) {
-		// TODO Auto-generated method stub
+
 		return authorityDao.add(authority);
 	}
 
 	@Override
 	public int deleteByRoleId(Long roleId) {
-		// TODO Auto-generated method stub
+
 		return authorityDao.deleteByRoleId(roleId);
 	}
 
 	@Override
 	public List<Authority> findListByRoleId(Long roleId) {
-		// TODO Auto-generated method stub
+
 		return authorityDao.findListByRoleId(roleId);
 	}
 
